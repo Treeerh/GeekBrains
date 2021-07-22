@@ -18,6 +18,7 @@ while True:
         break
     else:
         print('Введите число от 0 до 10')
+
 #   3: Создайте программу “Медицинская анкета”, где вы запросите у
 #       пользователя следующие данные: имя, фамилия, возраст и вес.
 
@@ -26,11 +27,11 @@ family = input('Введите вашу Фамилию :')
 age = int(input('Введите ваш возраст :'))
 heft = int(input('Введите ваш вес :'))
 
-if age < 30 and heft >= 50 and heft <=120:
+if age <= 30 and heft >= 50 and heft <=120:
     print('Пациент', name, family, 'в возрасте', age,'в хорошем состоянии')
-elif age > 30 and heft < 50 or heft > 120:
+elif age > 30 and age <= 40 and (heft < 50 or heft > 120):
     print('Пациенту', name, family, 'в возрасте', age, 'требуется занятся собой')
-elif age > 40 and heft < 50 or heft > 120:
+elif age > 40 and (heft < 50 or heft > 120):
     print('Пациенту', name, family, 'в возрасте', age, 'требуется врачебный осмотр')
 else:
     print('Все остальные варианты вы можете обработать на ваш вкус и полет фантазии.')
