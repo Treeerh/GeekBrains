@@ -1,6 +1,7 @@
 #   1: Создайте функцию, принимающую на вход имя, возраст и город проживания человека.
 #       Функция должна возвращать строку вида «Василий, 21 год(а),
 #       проживает в городе Москва»
+
 '''
 def Datas(name='', age='', city=''):
     name = input('Введите имя: ')
@@ -9,6 +10,17 @@ def Datas(name='', age='', city=''):
     return F'{name}, {age} год(а), проживает в городе {city}'
 print(Datas())
 '''
+#   С учетом разбора
+'''
+name = input('Введите имя: ')
+age = input('Введите возраст: ')
+city = input('Введите горо проживания: ')
+
+def Datas(name, age, city):
+    return F'{name}, {age} год(а), проживает в городе {city}'
+print(Datas(name,age,city))
+'''
+
 #   2: Создайте функцию, принимающую на вход 3 числа
 #       и возвращающую наибольшее из них.
 '''
@@ -26,6 +38,14 @@ def big_1():
     return max(args)
 print(big_1())
 '''
+#   С учетом разбора
+'''
+def big_0(arg_0, arg_1, arg_2):
+    rez = max([arg_0,arg_1,arg_2])
+    return rez
+print(big_0(45,-15,10))
+'''
+
 #   3: Давайте опишем пару сущностей player и enemy через словарь,
 #   который будет иметь ключи и значения:
 #       name - строка полученная от пользователя,
@@ -48,26 +68,20 @@ print(big_1())
 #       Примечание. Функция номер 2 используется внутри функции номер 1
 #       для вычисления урона и вычитания его из здоровья персонажа.
 
+'''
 player = {'health': 100, 'damage': 40, 'arrmor': 1.2}
 p_name = input('Введите имя Игрока')
 player['name'] = p_name
-
-
 enemy = {'name': 'zombie', 'health': 100, 'damage': 50, 'arrmor': 0.8}
 
 def attack(strike, protected):
     nam_s = strike['name']
+    print(nam_s)
     nam_p = protected['name']
-    print(F'Атакует : "{nam_s}" ')
     ene_h = protected['health']
-    print(F'Здаровье ВРАГА {ene_h}')
     per_d = strike['damage']
-    print(F'Урон АТАКУЮЩЕГО {per_d}')
     ene_a = protected['arrmor']
-    print(F'БРОНЯ ВРАГА {ene_a}')
     dem_a = ene_h - per_d
-
-    print(dem_a)
     def dem(dem_a, ene_a):
         harm = dem_a/ene_a
         print(harm)
@@ -78,9 +92,28 @@ def attack(strike, protected):
         del protected
     else:
         protected['health'] = rez
-        #return protected
-print(F'----- {player} ----')
-print(F'------ {enemy} -----')
+        return protected
+
+print(attack(player,enemy))
 print(attack(enemy,player))
-print(player)
+'''
+#   С учетом разбора
+
+p_name = input('Введите имя Игрока : ')
+player = {'name': p_name,'health': 100, 'damage': 50, 'arrmor': 1.2}
+
+e_name = input('Введите имя Игрока : ')
+enemy = {'name': e_name, 'health': 50, 'damage': 30, 'arrmor': 1}
+
+def uron(damage,arrmor):
+    return damage / arrmor
+
+def attack(strike, protected):
+    damage = uron(strike['damage'], protected['arrmor'])
+    protected['health'] -= damage
+
+attack(player,enemy)
 print(enemy)
+attack(enemy,player)
+print(player)
+
