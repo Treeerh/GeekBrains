@@ -1,6 +1,7 @@
-#import os
-from os import getcwd,path,listdir,mkdir,rmdir
-#path = os.getcwd()  # Для проверки модуля
+import os
+from os import getcwd, path, listdir, mkdir, rmdir
+my_path = getcwd()  # Для проверки модуля
+#print(os.path.join(my_path, 'dir_1'))
 
 def create_dir(way):
     for i in range(1,10):
@@ -8,7 +9,7 @@ def create_dir(way):
         mkdir(new_path)
         print('Создано',new_path)
 
-#
+
 def delete_dir(way):
     pas = listdir(way)
     for i in pas:
@@ -17,9 +18,10 @@ def delete_dir(way):
             print('Удалено',path.join(way,i))
             rmdir(path.join(way,i))
 
-''' Проверка в модуле
-create_dir(path)   # Создание папок
-delete_dir(path)   # Удаление папок 
-'''
+if __name__ == '__main__':
+    #pass
+    create_dir(my_path)   # Создание папок
+    delete_dir(my_path)   # Удаление папок
+
 
 

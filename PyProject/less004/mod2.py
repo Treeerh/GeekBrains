@@ -8,3 +8,9 @@ def rend_list(my_list):
     else:
         return choice(my_list)
 
+my_list = [1,2,3,4,5,6,7,8,9]
+my_zero = []
+if __name__ == '__main__':
+    print(rend_list([]))
+    print(rend_list(my_list))
+    print(rend_list(my_zero))
